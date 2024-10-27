@@ -2,6 +2,7 @@ import 'package:banaras_guide/constants/const_color.dart';
 import 'package:banaras_guide/constants/const_string.dart';
 import 'package:banaras_guide/core/app/controller/home_screen_controller.dart';
 import 'package:banaras_guide/core/presentation/views/explore_screen.dart';
+import 'package:banaras_guide/core/presentation/views/favourite_screen.dart';
 import 'package:banaras_guide/core/presentation/views/profile_screen.dart';
 import 'package:banaras_guide/helper/circle_centric_design.dart';
 import 'package:banaras_guide/helper/helper_widgets.dart';
@@ -293,13 +294,30 @@ class HomeScreen extends GetView<HomeScreenController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Upcoming Events',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Upcoming Events',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12)),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      Icons.calendar_month,
+                      color: appColor,
+                    )))
+          ],
         ),
         SizedBox(height: 15),
         Container(
@@ -390,46 +408,11 @@ class HomeScreen extends GetView<HomeScreenController> {
   }
 
   Widget _buildFavoritesView() {
-    return Container(
-      padding: EdgeInsets.all(18.0),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Your Favorites',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 20),
-          // Add your favorites view content here
-        ],
-      ),
-    );
+    return Container(padding: EdgeInsets.all(18.0), child: FavouriteScreen());
   }
 
   Widget _buildProfileView() {
-    return Container(
-        padding: EdgeInsets.all(18.0),
-        child:
-            ProfileScreen() /* const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Profile',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(height: 20),
-          // Add your profile view content here
-        ],
-      ), */
-        );
+    return Container(padding: EdgeInsets.all(18.0), child: ProfileScreen());
   }
 
   Widget _buildFloatingNavBar(

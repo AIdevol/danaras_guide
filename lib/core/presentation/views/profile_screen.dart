@@ -67,7 +67,7 @@ class ProfileScreen extends GetView<ProfileScreenController> {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    "John Doe",
+                    "Devesh Tiwari",
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -75,7 +75,7 @@ class ProfileScreen extends GetView<ProfileScreenController> {
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    "john.doe@example.com",
+                    "devesh@flutterfly.com",
                     style: TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
@@ -101,20 +101,25 @@ class ProfileScreen extends GetView<ProfileScreenController> {
             ),
 
             const SizedBox(height: 20),
-
             // Menu Items
             _buildMenuItem(
               context,
               icon: Icons.person,
               title: "Profile",
-              onTap: () => controller.onProfileTap(),
+              onTap: () => controller.onProfileTap(context),
+            ),
+            _buildMenuItem(
+              context,
+              icon: Icons.dashboard,
+              title: "Dashboard",
+              onTap: () => controller.onProfileTap(context),
             ),
             _buildMenuItem(
               context,
               icon: Icons.notifications,
               title: "Notifications",
               badge: "3",
-              onTap: () => controller.onNotificationsTap(),
+              onTap: () => controller.onNotificationsTap(context),
             ),
             _buildMenuItem(
               context,
@@ -126,7 +131,7 @@ class ProfileScreen extends GetView<ProfileScreenController> {
               context,
               icon: Icons.settings,
               title: "Settings",
-              onTap: () => controller.onSettingsTap(),
+              onTap: () => controller.onSettingsTap(context),
             ),
             _buildMenuItem(
               context,

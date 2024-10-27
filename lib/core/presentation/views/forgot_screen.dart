@@ -25,16 +25,7 @@ class ForgotPasswordScreen extends GetView<ForgotPasswordController> {
                 right: 0,
                 child: ConcentricCircles(),
               ),
-              Positioned(
-                bottom: 20,
-                left: 0,
-                right: 0,
-                height: MediaQuery.of(context).size.height * 0.85,
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: _mainWidgetViews(context, controller),
-                ),
-              ),
+              
             ],
           ),
         ),

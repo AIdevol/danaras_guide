@@ -5,8 +5,11 @@ import 'package:banaras_guide/core/presentation/bindings/bindings.dart';
 import 'package:banaras_guide/core/presentation/views/explore_screen.dart';
 import 'package:banaras_guide/core/presentation/views/forgot_screen.dart';
 import 'package:banaras_guide/core/presentation/views/login_screen.dart';
+import 'package:banaras_guide/core/presentation/views/notifications_screen.dart';
 import 'package:banaras_guide/core/presentation/views/profile_screen.dart';
+import 'package:banaras_guide/core/presentation/views/settings_screen.dart';
 import 'package:banaras_guide/core/presentation/views/signup_screen.dart';
+import 'package:banaras_guide/launcher/intro/views/intro_screen.dart';
 import 'package:banaras_guide/launcher/screen_launcher/bindings/screen_bindings.dart';
 import 'package:get/get.dart';
 
@@ -50,6 +53,21 @@ class AppPages {
       name: AppRoutes.exploreScreen,
       binding: PresentationBindigns(),
       page: () => const ExploreBanarasScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.settingsScreen,
+      binding: PresentationBindigns(),
+      page: () => const SettingsScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.notifications,
+      binding: PresentationBindigns(),
+      page: () =>  NotificationsScreen(),
+    ),
+     GetPage(
+      name: AppRoutes.introScreenContent,
+      binding: PresentationBindigns(),
+      page: () => AppIntroScreen(),
     )
   ];
 }

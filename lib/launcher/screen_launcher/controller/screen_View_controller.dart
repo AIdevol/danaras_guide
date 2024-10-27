@@ -14,7 +14,7 @@ class ScreenViewController extends GetxController {
 
   _navigateToNextScreen() {
     Timer(const Duration(milliseconds: 3500), () {
-      Get.offNamed(AppRoutes.login);
+      Get.offNamed(AppRoutes.introScreenContent);
     });
   }
 }
