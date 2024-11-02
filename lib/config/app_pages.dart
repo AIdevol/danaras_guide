@@ -1,7 +1,10 @@
+import 'package:banaras_guide/admin/views/dashboard_screen.dart';
 import 'package:banaras_guide/constants/route_strings.dart';
 import 'package:banaras_guide/core/app/bindings/bindings.dart';
 import 'package:banaras_guide/core/app/views/home_screen.dart';
 import 'package:banaras_guide/core/presentation/bindings/bindings.dart';
+import 'package:banaras_guide/core/presentation/details_screen/views/details_screen.dart';
+import 'package:banaras_guide/core/presentation/views/calender_view.dart';
 import 'package:banaras_guide/core/presentation/views/explore_screen.dart';
 import 'package:banaras_guide/core/presentation/views/forgot_screen.dart';
 import 'package:banaras_guide/core/presentation/views/login_screen.dart';
@@ -40,6 +43,11 @@ class AppPages {
       page: () => const SignupScreen(),
     ),
     GetPage(
+      name: AppRoutes.detailsScreen,
+      binding: PresentationBindigns(),
+      page: () => DetailsTempleScreen(),
+    ),
+    GetPage(
       name: AppRoutes.forgotpassword,
       binding: PresentationBindigns(),
       page: () => const ForgotPasswordScreen(),
@@ -62,12 +70,24 @@ class AppPages {
     GetPage(
       name: AppRoutes.notifications,
       binding: PresentationBindigns(),
-      page: () =>  NotificationsScreen(),
+      page: () => NotificationsScreen(),
     ),
-     GetPage(
+    GetPage(
       name: AppRoutes.introScreenContent,
       binding: PresentationBindigns(),
       page: () => AppIntroScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.calenderScreen,
+      binding: PresentationBindigns(),
+      page: () => CalenderView(),
+    ),
+    /// App routes for Admin dashboard.
+    
+    GetPage(
+      name: AppRoutes.dashboardScreen,
+      binding: HomeBinding(),
+      page: () => DashboardScreen(),
     )
   ];
 }

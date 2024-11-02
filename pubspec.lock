@@ -248,6 +248,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.19.0"
   js:
     dependency: transitive
     description:
@@ -477,6 +485,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_calendar:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_calendar
+      sha256: af3be44f1121b55af4048ceccb0ae948b0ca7d07f20318e352d6522cab26f043
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.56"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: "977a6bbf67b542e8b59566b9963f1c3c270feae7737f9c85891c3ad81a40dd53"
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.57"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: "6a2445aef2adc77136aedaf8b0c1b7f22c43b43d7036f219414db9acd679570a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.57"
+  syncfusion_flutter_datepicker:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_datepicker
+      sha256: e4d42b03b69e80b5936f44d420f9577542f8b156ba5ee78a05e28b23ed63c850
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.56"
+  syncfusion_flutter_gauges:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_gauges
+      sha256: "388e477decf9a2fa6dc7d254b38e908f19ae31763566c00ec7ef0eeb7efc464d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.57"
   term_glyph:
     dependency: transitive
     description:
@@ -493,6 +541,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.2"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      sha256: "2236ec079a174ce07434e89fcd3fcda430025eb7692244139a9cf54fdcf1fc7d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.4"
   typed_data:
     dependency: transitive
     description:

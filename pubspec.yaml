@@ -47,6 +47,9 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   device_info_plus: ^11.1.0
   overlay_support: ^2.1.0
+  syncfusion_flutter_calendar: ^27.1.56
+  syncfusion_flutter_charts: ^27.1.57
+  syncfusion_flutter_gauges: ^27.1.57
 
 dev_dependencies:
   flutter_test:

@@ -112,7 +112,7 @@ class ProfileScreen extends GetView<ProfileScreenController> {
               context,
               icon: Icons.dashboard,
               title: "Dashboard",
-              onTap: () => controller.onProfileTap(context),
+              onTap: () => controller.onDashboatrdTap(context),
             ),
             _buildMenuItem(
               context,

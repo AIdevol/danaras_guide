@@ -11,6 +11,10 @@ class ProfileScreenController extends GetxController {
     Navigator.of(context).pushNamed(AppRoutes.settingsScreen);
   }
 
+  onDashboatrdTap(BuildContext context) {
+    Navigator.of(context).pushNamed(AppRoutes.dashboardScreen);
+  }
+
   onGuideTap() {}
 
   onSettingsTap(BuildContext context) {}

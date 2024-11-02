@@ -1,5 +1,7 @@
 import 'package:banaras_guide/constants/const_color.dart';
+import 'package:banaras_guide/constants/const_image.dart';
 import 'package:banaras_guide/constants/const_string.dart';
+import 'package:banaras_guide/constants/route_strings.dart';
 import 'package:banaras_guide/core/app/controller/home_screen_controller.dart';
 import 'package:banaras_guide/core/presentation/views/explore_screen.dart';
 import 'package:banaras_guide/core/presentation/views/favourite_screen.dart';
@@ -77,7 +79,7 @@ class HomeScreen extends GetView<HomeScreenController> {
             SizedBox(height: 25),
             _buildPopularPlacesSection(),
             SizedBox(height: 25),
-            _buildUpcomingEventsSection(),
+            _buildUpcomingEventsSection(context),
           ],
         ),
       ),
@@ -229,75 +231,88 @@ class HomeScreen extends GetView<HomeScreenController> {
         ),
         SizedBox(height: 15),
         Container(
-          height: 200,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 4,
-            itemBuilder: (context, index) => Container(
-              width: 160,
-              margin: EdgeInsets.only(right: 15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
+            height: 200,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: controller.popularPlacesList.length,
+              itemBuilder: (context, index) {
+                final place = controller.popularPlacesList[index];
+                return GestureDetector(
+                  onTap: () => Navigator.of(context).pushNamed(
+                    AppRoutes.detailsScreen,
+                    arguments: place, // Pass the place object to details screen
                   ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(15)),
-                    child: Container(
-                      height: 120,
-                      color: Colors.grey[300],
-                      // Add Image.network() here for actual images
+                  child: Container(
+                    width: 160,
+                    margin: EdgeInsets.only(right: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(12),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Place ${index + 1}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                        ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(15)),
+                          child: Container(
+                            height: 120,
+                            color: Colors.grey[300],
+                            child: Image.asset(
+                              place.imagePath,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                        Text(
-                          '4.5 ★ (500+ reviews)',
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 12,
+                        Padding(
+                          padding: const EdgeInsets.all(12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                place.name,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              Text(
+                                '${place.rating} ★ (${place.reviewCount}+ reviews)',
+                                style: TextStyle(
+                                  color: Colors.grey[600],
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
+                );
+              },
+            )),
       ],
     );
   }
 
-  Widget _buildUpcomingEventsSection() {
+  Widget _buildUpcomingEventsSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Upcoming Events',
               style: TextStyle(
                 fontSize: 20,
@@ -312,7 +327,8 @@ class HomeScreen extends GetView<HomeScreenController> {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(12)),
                 child: IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context)
+                        .pushNamed(AppRoutes.calenderScreen),
                     icon: Icon(
                       Icons.calendar_month,
                       color: appColor,
@@ -320,80 +336,84 @@ class HomeScreen extends GetView<HomeScreenController> {
           ],
         ),
         SizedBox(height: 15),
-        Container(
-          height: 100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 3,
-            itemBuilder: (context, index) => Container(
-              width: 280,
-              margin: EdgeInsets.only(right: 15),
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: 70,
-                    height: 70,
-                    decoration: BoxDecoration(
-                      color: appColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(10),
+        GestureDetector(
+          onTap: () =>
+              Navigator.of(context).pushNamed(AppRoutes.calenderScreen),
+          child: Container(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 3,
+              itemBuilder: (context, index) => Container(
+                width: 280,
+                margin: EdgeInsets.only(right: 15),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: Offset(0, 4),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '${index + 15}',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: appColor,
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: appColor.withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '${index + 15}',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: appColor,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'OCT',
-                          style: TextStyle(
-                            color: appColor,
-                            fontWeight: FontWeight.w500,
+                          Text(
+                            'OCT',
+                            style: TextStyle(
+                              color: appColor,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 15),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Ganga Aarti',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                    SizedBox(width: 15),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Ganga Aarti',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Dashashwamedh Ghat',
-                          style: TextStyle(
-                            color: Colors.grey[600],
-                            fontSize: 14,
+                          Text(
+                            'Dashashwamedh Ghat',
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontSize: 14,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
