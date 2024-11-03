@@ -1,4 +1,5 @@
 import 'package:banaras_guide/constants/const_color.dart';
+import 'package:banaras_guide/constants/const_image.dart';
 import 'package:banaras_guide/core/presentation/controller/explore_screen_controller.dart';
 import 'package:banaras_guide/helper/helper_widgets.dart';
 import 'package:flutter/material.dart';
@@ -32,8 +33,8 @@ class ExploreBanarasScreen extends GetView<ExploreBanarasController> {
                 background: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Image.network(
-                      'https://images.unsplash.com/photo-1561361513-2d000a50f0dc',
+                    Image.asset(
+                      kashiView,
                       fit: BoxFit.cover,
                     ),
                     Container(

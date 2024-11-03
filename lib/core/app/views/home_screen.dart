@@ -55,7 +55,7 @@ class HomeScreen extends GetView<HomeScreenController> {
                 bottom: 0,
                 left: 0,
                 right: 0,
-                child: _buildFloatingNavBar(context, controller),
+                child: buildFloatingNavBar(controller, context),
               ),
             ],
           ),
@@ -78,7 +78,7 @@ class HomeScreen extends GetView<HomeScreenController> {
             _buildCategorySection(),
             SizedBox(height: 25),
             _buildPopularPlacesSection(),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             _buildUpcomingEventsSection(context),
           ],
         ),
@@ -435,8 +435,8 @@ class HomeScreen extends GetView<HomeScreenController> {
     return Container(padding: EdgeInsets.all(18.0), child: ProfileScreen());
   }
 
-  Widget _buildFloatingNavBar(
-      BuildContext context, HomeScreenController controller) {
+  Widget buildFloatingNavBar(
+      HomeScreenController controller, BuildContext context) {
     return Container(
       height: 100,
       padding: const EdgeInsets.all(16),
@@ -448,7 +448,7 @@ class HomeScreen extends GetView<HomeScreenController> {
             BoxShadow(
               color: Colors.black.withOpacity(0.15),
               blurRadius: 20,
-              offset: Offset(0, 5),
+              offset: const Offset(0, 5),
             ),
           ],
         ),
@@ -477,8 +477,7 @@ class HomeScreen extends GetView<HomeScreenController> {
               icon: Icons.person_rounded,
               label: 'Profile',
               isSelected: controller.currentPage == 3,
-              onTap: () => controller
-                  .changePage(3) /* controller.navigateToProfile(context) */,
+              onTap: () => controller.changePage(3),
             ),
           ],
         ),

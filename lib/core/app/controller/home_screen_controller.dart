@@ -57,25 +57,22 @@ class HomeScreenController extends GetxController {
       location: 'Varanasi, Uttar Pradesh',
     ),
   ].obs;
-  final PageController pageController = PageController();
+  final PageController pageController = PageController(initialPage: 0);
   int currentPage = 0;
 
-  void changePage(int index) {
-    currentPage = index;
-    pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-    update();
+  @override
+  void onClose() {
+    pageController.dispose();
+    super.onClose();
   }
 
-  void navigateToProfile(BuildContext context) {
-    changePage(3);
-    // Navigator.push(
-    //   context,
-    //   CustomPageTransition(const ProfileScreen()),
-    // );
+  void changePage(int index) {
+    // Immediately update current page
+    currentPage = index;
+    
+    // Jump to the page instantly, then animate the transition
+    pageController.jumpToPage(index);
+    update();
   }
 }
 
